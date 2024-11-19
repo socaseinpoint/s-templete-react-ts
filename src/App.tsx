@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import Button from './components/ui/Button'
+import Button from '@/components/ui/Button'
 
 const queryClient = new QueryClient()
 

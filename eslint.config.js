@@ -28,6 +28,12 @@ export default [
       react: {
         version: 'detect', // Automatically detect the React version
       },
+      'import/resolver': {
+        alias: {
+          map: [['@', './src']],
+          extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        },
+      },
     },
     rules: {
       ...pluginJs.configs.recommended.rules,
