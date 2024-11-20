@@ -12,7 +12,9 @@ const BaseLayout = ({ children }: { children?: React.ReactNode }) => {
       }}
     >
       {children}
-      <Header />
+      <div className="fixed top-0 left-0 right-0">
+        <Header />
+      </div>
       <div className="fixed bottom-0 left-0 right-0">
         <Navbar />
       </div>
