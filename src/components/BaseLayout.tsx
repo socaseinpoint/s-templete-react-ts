@@ -11,7 +11,7 @@ const BaseLayout = ({ children }: { children?: React.ReactNode }) => {
         backgroundImage: `url(${bg})`,
       }}
     >
-      {children}
+      <div className="pb-[94px] w-full h-full">{children}</div>
       <div className="fixed top-0 left-0 right-0">
         <Header />
       </div>

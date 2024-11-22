@@ -1,7 +1,24 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import HeroButton from '@/components/HeroButton'
+import HeroStats from '@/components/HeroStats'
 
 const Battle = () => {
   const [isStarted, setIsStarted] = useState(false)
+  const iframeRef = useRef<HTMLIFrameElement>(null)
+
+  useEffect(() => {
+    if (isStarted) {
+      setTimeout(() => {
+        console.log('!!!send start message')
+        iframeRef.current?.contentWindow?.postMessage(
+          {
+            action: 'START_BATTLE',
+          },
+          '*',
+        )
+      }, 3000)
+    }
+  }, [isStarted])
 
   return (
     <div className="w-full h-full">
@@ -14,18 +31,18 @@ const Battle = () => {
       )}
       {isStarted ? (
         <iframe
+          ref={iframeRef}
           className="w-full h-full"
-          src="https://hamster-kingdom-cocos.vercel.app"
+          src="http://192.168.18.56:7456"
           title="Hamster Kingdom"
         />
       ) : (
-        <button
-          className="absolute top-0 left-0 w-full h-full"
-          type="button"
-          onClick={() => setIsStarted(true)}
-        >
-          Start Fight
-        </button>
+        <div className="flex justify-center items-end w-full h-full px-[32px] pb-[24px]">
+          <div className="flex flex-col gap-[24px] w-full">
+            <HeroStats />
+            <HeroButton onClick={() => setIsStarted(true)} />
+          </div>
+        </div>
       )}
     </div>
   )
