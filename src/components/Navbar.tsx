@@ -16,7 +16,7 @@ const INACTIVE_ITEM_STYLE = 'text-[#FFD8A7] border-[transparent]'
 const mapNameToIcon = {
   Shop: icon1,
   Inventory: icon2,
-  Main: icon3,
+  Fight: icon3,
   Tournament: icon4,
   Market: icon5,
 }
@@ -24,7 +24,7 @@ const mapNameToIcon = {
 const mapNameToActiveIcon = {
   Shop: icon1Active,
   Inventory: icon2Active,
-  Main: icon3Active,
+  Fight: icon3Active,
   Tournament: icon4Active,
   Market: icon5Active,
 }
@@ -41,7 +41,9 @@ const NavItem = ({
   return (
     <Button
       className={`relative border-2 flex flex-col justify-center items-center text-text w-1/5 text-center text-[12px] h-[60px] mt-[4px] rounded-[16px] ${
-        isActive ? ACTIVE_ITEM_STYLE : INACTIVE_ITEM_STYLE
+        isActive
+          ? `${ACTIVE_ITEM_STYLE} shadow-[0px_2px_0px_0px_#42220b]`
+          : INACTIVE_ITEM_STYLE
       }`}
     >
       {isActive ? (
@@ -55,7 +57,7 @@ const NavItem = ({
           alt={label}
         />
       )}
-      <p className="mt-[4px]">{label}</p>
+      <p className="mt-[4px] text-[12px]">{label}</p>
       {isLocked && (
         <img
           src={locked}
@@ -72,7 +74,7 @@ const Navbar = () => {
     <div className="flex gap-[8px] flex-row bg-[#51280A] h-[94px] rounded-t-[16px] border-t-[1px] border-[#FFD8A7]">
       <NavItem label="Shop" isLocked></NavItem>
       <NavItem label="Inventory" isActive></NavItem>
-      <NavItem label="Main"></NavItem>
+      <NavItem label="Fight"></NavItem>
       <NavItem label="Tournament" isLocked></NavItem>
       <NavItem label="Market" isLocked></NavItem>
     </div>
