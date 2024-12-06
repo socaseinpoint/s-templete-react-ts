@@ -18,6 +18,7 @@
     "husky": "^9.1.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-modal": "^3.16.1",
     "tailwindcss": "^3.4.15",
     "zustand": "^5.0.1"
   },
