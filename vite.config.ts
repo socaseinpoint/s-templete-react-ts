@@ -5,7 +5,6 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import viteImagemin from 'vite-plugin-imagemin'
 
 import tailwindcss from 'tailwindcss'
 import autoprefixer from 'autoprefixer'
@@ -31,39 +30,7 @@ export default defineConfig({
       },
     },
   },
-  plugins: [
-    react(),
-    viteImagemin({
-      gifsicle: {
-        optimizationLevel: 7,
-        interlaced: false,
-      },
-      optipng: {
-        optimizationLevel: 7,
-      },
-      mozjpeg: {
-        quality: 75, // Уровень сжатия JPEG (0-100)
-      },
-      pngquant: {
-        quality: [0.65, 0.8], // Диапазон качества для PNG
-        speed: 4,
-      },
-      svgo: {
-        plugins: [
-          {
-            name: 'removeViewBox',
-            active: false,
-          },
-          {
-            name: 'addAttributesToSVGElement',
-            params: {
-              attributes: [{ xmlns: 'http://www.w3.org/2000/svg' }],
-            },
-          },
-        ],
-      },
-    }),
-  ],
+  plugins: [react()],
   css: {
     postcss: {
       plugins: [tailwindcss(), autoprefixer()],
